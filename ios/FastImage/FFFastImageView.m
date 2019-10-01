@@ -18,6 +18,7 @@
 - (id) init {
     self = [super init];
     self.resizeMode = RCTResizeModeCover;
+    self.maxBufferSize = 1024 * 1024;
     self.clipsToBounds = YES;
     return self;
 }
