@@ -214,7 +214,7 @@
                         if (error) {
                             weakSelf.hasErrored = YES;
                                 if (weakSelf.onFastImageError) {
-                                    weakSelf.onFastImageError(@{});
+                                    weakSelf.onFastImageError(@{@"code": @(error.code), @"description": error.localizedDescription});
                                 }
                                 if (weakSelf.onFastImageLoadEnd) {
                                     weakSelf.onFastImageLoadEnd(@{});
