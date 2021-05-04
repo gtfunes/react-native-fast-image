@@ -189,8 +189,12 @@ function FastImageBase({
     )
 }
 
-const FastImageMemo = memo(FastImageBase,
-    (prevProps: FastImageProps & { forwardedRef: React.Ref<any> }, nextProps: FastImageProps & { forwardedRef: React.Ref<any> }) =>
+const FastImageMemo = memo(
+    FastImageBase,
+    (
+        prevProps: FastImageProps & { forwardedRef: React.Ref<any> },
+        nextProps: FastImageProps & { forwardedRef: React.Ref<any> },
+    ) =>
         isEqual(prevProps.source, nextProps.source) &&
         prevProps.tintColor === nextProps.tintColor &&
         prevProps.onLoadStart?.toString() ===
@@ -203,7 +207,8 @@ const FastImageMemo = memo(FastImageBase,
         isEqual(prevProps.children, nextProps.children) &&
         prevProps.fallback === nextProps.fallback &&
         prevProps.forwardedRef?.toString() ===
-            nextProps.forwardedRef?.toString())
+            nextProps.forwardedRef?.toString(),
+)
 
 const FastImageComponent: React.ComponentType<FastImageProps> = forwardRef(
     (props: FastImageProps, ref: React.Ref<any>) => (
