@@ -12,6 +12,7 @@ import {
     TransformsStyle,
     AccessibilityProps,
 } from 'react-native'
+import { isEqual } from 'lodash'
 
 const FastImageViewNativeModule = NativeModules.FastImageView
 
@@ -188,7 +189,21 @@ function FastImageBase({
     )
 }
 
-const FastImageMemo = memo(FastImageBase)
+const FastImageMemo = memo(FastImageBase,
+    (prevProps: FastImageProps & { forwardedRef: React.Ref<any> }, nextProps: FastImageProps & { forwardedRef: React.Ref<any> }) =>
+        isEqual(prevProps.source, nextProps.source) &&
+        prevProps.tintColor === nextProps.tintColor &&
+        prevProps.onLoadStart?.toString() ===
+            nextProps.onLoadStart?.toString() &&
+        prevProps.onProgress?.toString() === nextProps.onProgress?.toString() &&
+        prevProps.onLoad?.toString() === nextProps.onLoad?.toString() &&
+        prevProps.onError?.toString() === nextProps.onError?.toString() &&
+        prevProps.onLoadEnd?.toString() === nextProps.onLoadEnd?.toString() &&
+        isEqual(prevProps.style, nextProps.style) &&
+        isEqual(prevProps.children, nextProps.children) &&
+        prevProps.fallback === nextProps.fallback &&
+        prevProps.forwardedRef?.toString() ===
+            nextProps.forwardedRef?.toString())
 
 const FastImageComponent: React.ComponentType<FastImageProps> = forwardRef(
     (props: FastImageProps, ref: React.Ref<any>) => (

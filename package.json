@@ -63,6 +63,7 @@
         "dv-scripts": "^1.4.2",
         "eslint-config-dv-scripts": "^1.1.1",
         "jest": "^24.9.0",
+        "lodash": "4.17.11",
         "metro-react-native-babel-preset": "^0.56.0",
         "prettier": "^2.0.5",
         "react": "16.9.0",
