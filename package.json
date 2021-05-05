@@ -31,7 +31,7 @@
         "RNFastImage.podspec"
     ],
     "scripts": {
-        "install": "npm run build",
+        "prepare": "npm run build",
         "build": "dv-scripts build && cp src/index.js.flow dist/index.js.flow",
         "lint": "dv-scripts lint",
         "release": "dv-scripts release",
